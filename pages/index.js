@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>WedDev News</title>
+        <title>WebDev News</title>
         <meta name="keywords" content="web development, programming" />
       </Head>
       <h1>Welcome to NextJS</h1>
