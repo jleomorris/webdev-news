@@ -17,8 +17,8 @@ const Article = ({ article }) => {
   );
 };
 
-// Fetches on each click of an article
-export const getServerSideProps = async (context) => {
+// Fetches at build time - faster than getServerSideProps, needs to be used with getStaticPaths
+export const getStaticProps = async (context) => {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${context.params.id}`
   );
@@ -29,6 +29,21 @@ export const getServerSideProps = async (context) => {
     props: {
       article,
     },
+  };
+};
+
+export const getStaticPaths = async () => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/`);
+
+  const articles = await res.json();
+
+  const ids = articles.map((article) => article.id);
+
+  const paths = ids.map((id) => ({ params: { id: id.toString() } }));
+
+  return {
+    paths,
+    fallback: false,
   };
 };
 
