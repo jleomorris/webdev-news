@@ -3,6 +3,7 @@ import { server } from "../config";
 import Image from "next/image";
 import ArticleList from "../components/ArticleList";
 // import styles from '../styles/Home.module.css'
+import { articles } from "../data";
 
 export default function Home({ articles }) {
   // console.table(articles);
@@ -34,8 +35,9 @@ export default function Home({ articles }) {
 
 // Our own api example
 export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/articles`);
-  const articles = await res.json();
+  // Cannot make calls to api in getStaticProps
+  // const res = await fetch(`${server}/api/articles`);
+  // const articles = await res.json();
 
   return {
     props: {

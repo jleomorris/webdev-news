@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Meta from "../../../components/Meta";
 import articleStyles from "../../../styles/Article.module.css";
+import { articles } from "../../../data";
 
 // Passed in prop must match returned prop from getProps function below
 const Article = ({ article }) => {
@@ -23,12 +24,19 @@ const Article = ({ article }) => {
   );
 };
 
-// Own api example
 // Fetches at build time - faster than getServerSideProps, needs to be used with getStaticPaths
 export const getStaticProps = async (context) => {
-  const res = await fetch(`${server}/api/articles/${context.params.id}`);
+  // console.log("pages.article.[id].getStaticProps", context);
 
-  const article = await res.json();
+  // Cannot make calls to api in getStaticProps
+  // const res = await fetch(`${server}/api/articles/${context.params.id}`);
+  // const article = await res.json();
+
+  const article = articles.filter(
+    (article) => article.id === context.params.id
+  )[0];
+
+  console.log("filtered article:", article);
 
   return {
     props: {
