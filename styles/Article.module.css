@@ -1,9 +1,9 @@
 .grid {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1200px;
   margin-top: 3rem;
 }
 
@@ -47,4 +47,8 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.articleBody {
+  width: 70%;
 }
