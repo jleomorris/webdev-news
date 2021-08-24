@@ -1,5 +1,5 @@
 import { server } from "../config";
-import Head from "next/head";
+// import Head from "next/head";
 import Image from "next/image";
 import ArticleList from "../components/ArticleList";
 // import styles from '../styles/Home.module.css'
@@ -9,10 +9,10 @@ export default function Home({ articles }) {
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>WebDev News</title>
         <meta name="keywords" content="web development, programming" />
-      </Head>
+      </Head> */}
       <ArticleList articles={articles} />
     </div>
   );
